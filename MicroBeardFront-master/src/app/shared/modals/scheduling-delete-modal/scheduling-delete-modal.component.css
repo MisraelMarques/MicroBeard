@@ -1,0 +1,9 @@
+.modal-body{
+  margin-left: 10px;
+}
+
+.deleteButton{
+  margin: 0px 20px 20px 20px;
+  display: flex;
+  justify-content: end;
+}

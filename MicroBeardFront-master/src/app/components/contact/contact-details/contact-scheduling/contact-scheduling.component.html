@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="fontTitle">Código</th>
+              <th class="col-8 fontTitle">Título</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let scheduling of schedulings" (click)="onSchedulingClicked(scheduling)">
+              <td class="fontRegular">{{scheduling?.code}}</td>
+              <td class="fontRegular">{{scheduling?.title}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

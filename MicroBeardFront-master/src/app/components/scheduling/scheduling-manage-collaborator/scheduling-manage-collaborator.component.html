@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="fontTitle">Código</th>
+              <th class="fontTitle">Descrição</th>
+              <th class="buttonT fontTitle"><button title="Adicionar" type="button" class="fontButton btn btn-primary" [disabled]="(isServiceEmpty)"  (click)="open()"><i class="bi bi-plus-lg"></i></button></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="collaborator != null" (click)="handleEvent('Clicked', collaborator)">
+              <td class="fontRegular">{{collaborator?.code}}</td>
+              <td class="fontRegular">{{collaborator?.name}}</td>
+              <td class="buttonT"><button title="Remover" type="button" class="fontButton btn btn-danger" (click)="handleEvent('Remove', collaborator)"><i class="bi bi-x-lg"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

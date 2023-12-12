@@ -1,0 +1,32 @@
+<div>
+  <ul
+    ngbNav
+    #nav="ngbNav"
+    [(activeId)]="active"
+    class="nav-pills"
+    orientation="vertical"
+  >
+     <!-- <li ngbNavItem="home" class="mb-3 mt-4">
+      <a ngbNavLink [routerLink]="['/home']" class="fontMediumn"> <i class="bi bi-grid-fill"></i>Painel inicial</a>
+      <ng-template ngbNavContent> </ng-template>
+    </li> -->
+    <li ngbNavItem="scheduling" class="mb-3 mt-4">
+      <a ngbNavLink [routerLink]="['/scheduling/calendar']" class="fontMediumn"><i class="bi bi-calendar-week-fill"></i>Agendamentos</a>
+      <ng-template ngbNavContent class="mb-3"> </ng-template>
+    </li>
+    <li ngbNavItem="contact" class="mb-3">
+      <a ngbNavLink [routerLink]="['/contact/list']" class="fontMediumn"><i class="bi bi-person-badge-fill"></i>Clientes</a>
+      <ng-template ngbNavContent> </ng-template>
+    </li>
+    <li ngbNavItem="collaborator" class="mb-3">
+      <a ngbNavLink [routerLink]="['/collaborator/list']" class="fontMediumn"><i class="bi bi-people-fill"></i>Colaboradores</a>
+      <ng-template ngbNavContent> </ng-template>
+    </li>
+    <li ngbNavItem="service" class="mb-3">
+      <a ngbNavLink [routerLink]="['/service/list']" class="fontMediumn"><i class="bi bi-currency-dollar"></i>Serviços</a>
+      <ng-template ngbNavContent> </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="ms-4"></div>
+</div>

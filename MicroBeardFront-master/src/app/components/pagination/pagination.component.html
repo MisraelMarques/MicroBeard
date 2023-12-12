@@ -1,0 +1,25 @@
+<div class="pag">
+    <ul class="pagination justify-content-center">
+        <li [class] = "Pagination.HasPrevious ? 'page-item': 'page-item disabled'">
+            <button title="Primeira" class="page-link" (click)="changePageNumber(1)"><i class="bi bi-arrow-bar-left"></i></button>
+        </li>
+        <li [class] = "Pagination.HasPrevious ? 'page-item': 'page-item disabled'">
+            <button title="Anterior" class="page-link" (click)="previous()"><i class="bi bi-caret-left-fill"></i></button>
+        </li>
+        <ng-container *ngFor="let page of totalPages; index as i">
+            <li *ngIf="i + 1 >= (this.Pagination.CurrentPage - maxSize) && i + 1 <= (this.Pagination.CurrentPage + maxSize)"
+                [class]="this.Pagination.CurrentPage === (i  + 1) ? 'page-item active' : 'page-item'">
+                <button class="page-link" (click)="changePageNumber(i + 1)">{{i + 1}}</button>
+            </li>
+        </ng-container>
+        <li [class] = "Pagination.HasNext ? 'page-item': 'page-item disabled'">
+            <button title="Próxima" class="page-link" (click)="next()"><i class="bi bi-caret-right-fill"></i></button>
+        </li>
+        <li [class] = "Pagination.HasNext ? 'page-item': 'page-item disabled'">
+            <button title="Última" class="page-link" (click)="changePageNumber(this.Pagination.TotalPages)"><i class="bi bi-arrow-bar-right"></i></button>
+        </li>
+    </ul>
+    <div class="text-center paginationText fontRegular">
+        {{this.Pagination.TotalCount}} {{this.Pagination.TotalCount == 1 ? "item" : "items"}} em {{this.Pagination.TotalPages}} {{this.Pagination.TotalPages == 1 ? "página" : "páginas"}}.
+    </div>
+</div>

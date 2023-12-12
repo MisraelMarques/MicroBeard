@@ -1,0 +1,21 @@
+<div class="search-container">
+  <div class="no-gutters">
+		<div ngbDropdown class="d-inline-block">
+			<span title="Alterar Propriedade pesquisada" type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+				{{this.Search[this.currentSearchValue].DisplayValue}}
+      </span>
+			<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <div *ngFor="let search of Search | keyvalue">
+          <button ngbDropdownItem (click)="updateDropDownName(search.key)">{{search.value.DisplayValue}}</button>
+        </div>
+			</div>
+		</div>
+	</div>
+  <div class="all-search-form">
+    <form class="search" [formGroup]="searchForm">
+      <input class="search-form form-control mr-sm-2" type="search" placeholder="Pesquisar" id="search" formControlName="search" >
+    </form>
+    <button title="Pesquisar" type="button" class="search search-button btn btn-secondary"  (click)="executeSearch()" ><i class="bi bi-search"></i></button>
+  </div>
+</div>
+

@@ -1,0 +1,105 @@
+<div class="back card">
+
+  <div class="row g-0 justify-content-between">
+    <app-search class="col-md-auto"  [Search]="queryString.Search" (getAll) ="getAllSchedulings()"></app-search>
+    <div class="col-md-2 btn btn-primary" [routerLink]="['/scheduling/create']"> <a class ="fontButton text-decoration-none text-reset" ><i class="bi bi-calendar-week-fill"></i>Criar Agendamento</a> </div>
+  </div> 
+
+  <br>
+
+    <div class="row text-center">
+        <div class="col-md-4">
+          <div class="btn-group">
+            <div
+              class="btn btn-primary fontMediumn"
+              mwlCalendarPreviousView
+              [view]="view"
+              [(viewDate)]="viewDate"
+              (viewDateChange)="closeOpenMonthViewDay()"
+            >
+              Anterior
+            </div>
+            <div
+              class="btn btn-outline-secondary fontMediumn "
+              mwlCalendarToday
+              [(viewDate)]="viewDate"
+            >
+              Hoje
+            </div>
+            <div
+              class="btn btn-primary fontMediumn "
+              mwlCalendarNextView
+              [view]="view"
+              [(viewDate)]="viewDate"
+              (viewDateChange)="closeOpenMonthViewDay()"
+            >
+              Próximo
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <h3 class="fontBig" >{{ viewDate | calendarDate:(view + 'ViewTitle'):'pt-BR' }}</h3>
+        </div>
+
+        <div class="col-md-4">
+          <div class="btn-group">
+            <div
+              class="btn btn-primary fontMediumn "
+              (click)="setView(CalendarView.Month)"
+              [class.active]="view === CalendarView.Month"
+            >
+              Mês
+            </div>
+            <div
+              class="btn btn-primary fontMediumn "
+              (click)="setView(CalendarView.Week)"
+              [class.active]="view === CalendarView.Week"
+            >
+              Semana
+            </div>
+            <div
+              class="btn btn-primary fontMediumn "
+              (click)="setView(CalendarView.Day)"
+              [class.active]="view === CalendarView.Day"
+            >
+              Dia
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+
+      <div [ngSwitch]="view">
+        <mwl-calendar-month-view class="fontCalendar"
+          *ngSwitchCase="CalendarView.Month"
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+          [activeDayIsOpen]="activeDayIsOpen"
+          (dayClicked)="dayClicked($event.day)"
+          (eventClicked)="handleEvent('Clicked', $event.event)"
+          (eventTimesChanged)="eventTimesChanged($event)"
+        >
+        </mwl-calendar-month-view>
+        <mwl-calendar-week-view class="fontCalendar"
+          *ngSwitchCase="CalendarView.Week"
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+          (eventClicked)="handleEvent('Clicked', $event.event)"
+          (eventTimesChanged)="eventTimesChanged($event)"
+        >
+        </mwl-calendar-week-view>
+        <mwl-calendar-day-view class="fontCalendar"
+          *ngSwitchCase="CalendarView.Day"
+          [viewDate]="viewDate"
+          [events]="events"
+          [refresh]="refresh"
+          (eventClicked)="handleEvent('Clicked', $event.event)"
+          (eventTimesChanged)="eventTimesChanged($event)"
+        >
+        </mwl-calendar-day-view>
+      </div>
+    </div>

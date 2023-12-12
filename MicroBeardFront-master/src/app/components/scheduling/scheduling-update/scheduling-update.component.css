@@ -1,0 +1,30 @@
+.times {
+  display: flex;
+}
+
+.times div {
+  width: 240px;
+}
+.label{
+  width: auto;
+}
+
+@media (max-width: 600px)
+{
+  .times {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .label{
+    text-align: center;
+  }
+
+  .times div {
+    display: flex;
+    justify-content: center;
+  }
+  
+}
+
+

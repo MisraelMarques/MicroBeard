@@ -1,0 +1,44 @@
+<div class="back card">
+  <div class="row g-0 justify-content-between">
+    <app-search class="col-md-auto"  [Search]="queryString.Search" (getAll) ="getAllServices()"></app-search>
+    <div *ngIf="(role) !== 'Collaborator'" class="col-md-2 mt-2 btn btn-primary" [routerLink]="['/service/create']"> <a class ="fontButton text-decoration-none text-reset"><i class="bi bi-currency-dollar"></i>Cadastrar Serviço</a> </div>
+  </div> <br>
+  <div class="row g-0">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="fontTitle"(click)="updateOrdination('Code')"><div class="orderable"><span>Código</span><i [ngClass]="{
+                'ignored': queryString.Ordination['Code']['Order'] == 0,
+                'bi bi-caret-up-fill': queryString.Ordination['Code']['Order'] == 1,
+                'bi bi-caret-down-fill': queryString.Ordination['Code']['Order'] == 2}"></i></div></th>
+                <th class="fontTitle"(click)="updateOrdination('Name')"><div class="orderable"><span>Nome</span><i [ngClass]="{
+                  'ignored': queryString.Ordination['Name']['Order'] == 0,
+                  'bi bi-caret-up-fill': queryString.Ordination['Name']['Order'] == 1,
+                  'bi bi-caret-down-fill': queryString.Ordination['Name']['Order'] == 2}"></i></div></th>
+                  <th class="fontTitle"(click)="updateOrdination('Price')"><div class="orderable"><span>Preço</span><i [ngClass]="{
+                    'ignored': queryString.Ordination['Price']['Order'] == 0,
+                    'bi bi-caret-up-fill': queryString.Ordination['Price']['Order'] == 1,
+                    'bi bi-caret-down-fill': queryString.Ordination['Price']['Order'] == 2}"></i></div></th>
+              <th *ngIf="(role) !== 'Collaborator'" class="modify fontTitle"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let service of services" class="clickable" (click)="getServiceDetails(service.code)">
+              <td class="fontRegular">{{service.code}}</td>
+              <td class="fontRegular">{{service.name}}</td>
+              <td class="fontRegular">{{service.price | currency : 'R$ ' }}</td>
+              <td class="modify">
+                <button title="Atualizar" *ngIf="(role) !== 'Collaborator'" type="button" id="update" class="fontButton btn btn-success" (click)="redirectToUpdatePage(service.code)"><i class="bi bi-pencil-square"></i></button>
+                <button title="Apagar" *ngIf="(role) !== 'Collaborator'" type="button" id="delete" class="fontButton btn btn-danger" (click)="redirectToDeletePage(service.code)" ><i class="bi bi-trash-fill"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+      <app-pagination [Pagination]="queryString.Pagination" (getAll) ="getAllServices()"></app-pagination>
+</div>

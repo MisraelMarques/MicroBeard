@@ -1,0 +1,18 @@
+i {
+  margin-right: 5px;
+}
+
+.ignored{
+  visibility: hidden;
+}
+
+.modify{
+  width: 112px;
+  margin: 0;
+  text-align: end;
+}
+
+.modify button {
+  margin-left: 5px;
+  width: 42px;
+}

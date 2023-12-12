@@ -1,0 +1,8 @@
+tbody tr:hover{
+    cursor: pointer;
+  }
+
+.buttonT {
+    text-align: right;
+    vertical-align: middle;
+}

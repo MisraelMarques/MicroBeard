@@ -1,0 +1,119 @@
+<div class="back card">
+    <div class="card card-body bg-light mb-2 mt-2">
+  
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="code" class="control-label fontTitleMedium">Código:</label>
+        </div>
+        <div class="col-md-7">
+          <span class ="fontRegular" name="code">
+            {{scheduling?.code}}
+          </span>
+        </div>
+      </div>
+      <div class="row g-0">
+              <div class="col-md-4">
+                <label for="title" class="control-label fontTitleMedium">Título:</label>
+              </div>
+              <div class="col-md-7">
+                <span class ="fontRegular" name="title">
+                  {{scheduling?.title}}
+                </span>
+              </div>
+          </div>
+  
+          <div class="row g-0">
+              <div class="col-md-4">
+                <label for="date" class="control-label fontTitleMedium">Data de Início:</label>
+              </div>
+              <div class="col-md-7">
+                <span class ="fontRegular" name="date">
+                  {{scheduling?.date | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
+                </span>
+              </div>
+          </div>
+
+          <div class="row g-0">
+            <div class="col-md-4">
+              <label for="endDate" class="control-label fontTitleMedium">Data de Encerramento:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="endDate">
+                {{scheduling?.endDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
+              </span>
+            </div>
+        </div>
+
+          <div class="row g-0">
+            <div class="col-md-4">
+              <label for="creatorCode" class="control-label fontTitleMedium">Criador:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="creatorCode">
+                {{scheduling?.creatorCode}}
+              </span>
+            </div>
+          </div>
+  
+          <div class="row g-0">
+            <div class="col-md-4">
+              <label for="createDate" class="control-label fontTitleMedium">Data de criação:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="createDate">
+                {{scheduling?.createDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
+              </span>
+            </div>
+          </div>
+  
+          <div class="row g-0">
+            <div class="col-md-4">
+              <label for="updaterCode" class="control-label fontTitleMedium">Atualizador:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="updaterCode">
+                {{scheduling?.updaterCode}}
+              </span>
+            </div>
+          </div>
+  
+          <div class="row g-0">
+            <div class="col-md-4">
+              <label for="updateDate" class="control-label fontTitleMedium">Data de Atualização:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="updateDate">
+                {{scheduling?.updateDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
+              </span>
+            </div>
+          </div>
+  
+    </div>
+      
+    <br>
+
+    <span class="fontTitleBig"><i class="bi bi-person-badge-fill"></i> Cliente:</span>
+
+    <app-scheduling-contact [contact]="scheduling?.contact"></app-scheduling-contact>
+
+    <br>
+
+    <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviço:</span>
+
+    <app-scheduling-service [service]="scheduling?.license?.service"></app-scheduling-service>
+
+    <br>
+
+    <span class="fontTitleBig"><i class="bi bi-people-fill"></i> Colaborador:</span>
+
+    <app-scheduling-collaborator [collaborator]="scheduling?.license?.collaborator"></app-scheduling-collaborator>
+
+      
+    <div class="buttonsDiv">
+      <button title="Voltar" type="button" class="fontButton btn btn-secondary" (click)="redirectToSchedulingList()"><i class="bi bi-arrow-return-left"></i></button>
+      <td class="modify">
+        <button title="Atualizar" type="button" id="update" class="fontButton btn btn-success" (click)="redirectToUpdatePage(scheduling?.code)"><i class="bi bi-pencil-square"></i></button>
+        <button title="Apagar" type="button" id="delete" class="fontButton btn btn-danger" (click)="redirectToDeletePage(scheduling?.code)" ><i class="bi bi-trash-fill"></i></button>
+      </td>
+    </div>
+  </div>  

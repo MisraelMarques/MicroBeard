@@ -1,0 +1,73 @@
+.gradient-custom-2 {
+  /* fallback for old browsers */
+  background: #fccb90;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    #ee7724,
+    #d8363a,
+    #dd3675,
+    #b44593
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
+  }
+}
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+  }
+}
+
+label {
+  color: #555555;
+}
+
+input {
+  background: #F1F3F6;
+}
+
+button {
+  width: 100%;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  background: #cd250f;
+}
+
+img {
+  border-radius: 20px;
+}
+
+i {
+  color: #FFFFFF;
+}
+
+.forgotPassword {
+  text-align: end;
+}
+
+.background-image {
+  background: #f1f3f6;
+}
+
+.img-fluid, .divImg {
+  height: 100%;
+}
+
+.input-icon {
+  width: 40px;
+  padding: 6px;
+  height: 36.5px;
+  align-self: center;
+  text-align: center;
+  background: #cd250f;
+  border-radius: 8px;
+}

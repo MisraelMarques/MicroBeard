@@ -1,0 +1,172 @@
+<div class="back card">
+  <div class="card card-body bg-light mb-2 mt-2">
+
+    <div class="row g-0">
+      <div class="col-md-4">
+        <label for="code" class="control-label fontTitleMedium">Código:</label>
+      </div>
+      <div class="col-md-7">
+        <span class ="fontRegular" name="code">
+          {{collaborator?.code}}
+        </span>
+      </div>
+    </div>
+    <div class="row g-0">
+            <div class="col-md-4">
+              <label for="name" class="control-label fontTitleMedium">Nome:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="name">
+                {{collaborator?.name}}
+              </span>
+            </div>
+        </div>
+
+        <div class="row g-0">
+            <div class="col-md-4">
+              <label for="birthDate" class="control-label fontTitleMedium">Data de Nascimento:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="birthDate">
+                {{collaborator?.birthDate | date: 'dd/MM/yyyy':'UTC-6'}}
+              </span>
+            </div>
+        </div>
+
+        <div class="row g-0">
+            <div class="col-md-4">
+              <label for="cpf" class="control-label fontTitleMedium">CPF:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="cpf">
+                {{collaborator?.cpf | cpfcnpj}}
+              </span>
+            </div>
+        </div>
+
+        <div class="row g-0">
+            <div class="col-md-4">
+              <label for="email" class="control-label fontTitleMedium">Email:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="email">
+                {{collaborator?.email}}
+              </span>
+            </div>
+        </div>
+
+        <div class="row g-0">
+            <div class="col-md-4">
+              <label for="phone" class="control-label fontTitleMedium">Telefone:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="phone">
+                {{collaborator?.phone}}
+              </span>
+            </div>
+        </div>
+
+        <div class="row g-0">
+            <div class="col-md-4">
+              <label for="function" class="control-label fontTitleMedium">Função:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="function">
+                {{collaborator?.function}}
+              </span>
+            </div>
+        </div>
+
+        <div class="row g-0">
+            <div class="col-md-4">
+              <label for="salary" class="control-label fontTitleMedium">Salário:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="salary">
+                {{collaborator?.salary | currency}}
+              </span>
+            </div>
+        </div>
+
+        <div class="row g-0">
+            <div class="col-md-4">
+              <label for="commission" class="control-label fontTitleMedium">Comissão:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="commission">
+                {{collaborator?.commision | currency}}
+              </span>
+            </div>
+        </div>
+
+        <div class="row g-0">
+            <div class="col-md-4">
+              <label for="isAdmin" class="control-label fontTitleMedium">Administrador:</label>
+            </div>
+            <div class="col-md-7">
+              <span class ="fontRegular" name="isAdmin">
+                {{collaborator?.isAdmin ? 'Verdadeiro' : 'Falso'}}
+              </span>
+            </div>
+        </div>  
+
+        <div class="row g-0">
+          <div class="col-md-4">
+            <label for="creatorCode" class="control-label fontTitleMedium">Criador:</label>
+          </div>
+          <div class="col-md-7">
+            <span class ="fontRegular" name="creatorCode">
+              {{collaborator?.creatorCode}}
+            </span>
+          </div>
+        </div>
+
+        <div class="row g-0">
+          <div class="col-md-4">
+            <label for="createDate" class="control-label fontTitleMedium">Data de criação:</label>
+          </div>
+          <div class="col-md-7">
+            <span class ="fontRegular" name="createDate">
+              {{collaborator?.createDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
+            </span>
+          </div>
+        </div>
+
+        <div class="row g-0">
+          <div class="col-md-4">
+            <label for="updaterCode" class="control-label fontTitleMedium">Atualizador:</label>
+          </div>
+          <div class="col-md-7">
+            <span class ="fontRegular" name="updaterCode">
+              {{collaborator?.updaterCode}}
+            </span>
+          </div>
+        </div>
+
+        <div class="row g-0">
+          <div class="col-md-4">
+            <label for="updateDate" class="control-label fontTitleMedium">Data de Atualização:</label>
+          </div>
+          <div class="col-md-7">
+            <span class ="fontRegular" name="updateDate">
+              {{collaborator?.updateDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
+            </span>
+          </div>
+        </div>
+
+  </div>
+    
+  <br>
+
+  <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviços:</span>
+
+  <app-collaborator-service [licenses]="collaborator?.licenses"></app-collaborator-service>
+
+  <div class="buttonsDiv">
+    <button title="Voltar" type="button" class="fontButton btn btn-secondary" (click)="redirectToCollaboratorList()"><i class="bi bi-arrow-return-left"></i></button>
+    <td class="modify" >
+      <button title="Atualizar" *ngIf="(role) !== 'Collaborator'" type="button" id="update" class="fontButton btn btn-success" (click)="redirectToUpdatePage(collaborator.code)"><i class="bi bi-pencil-square"></i></button>
+      <button title="Apagar" *ngIf="(role) !== 'Collaborator'" type="button" id="delete" class="fontButton btn btn-danger" (click)="redirectToDeletePage(collaborator.code)" ><i class="bi bi-trash-fill"></i></button>
+    </td>
+  </div>
+</div>  

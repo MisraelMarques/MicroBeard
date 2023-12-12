@@ -1,0 +1,41 @@
+.container-fluid{
+    height: 91.1vh;
+}
+
+.fillPage{
+    height: 100%;
+}
+
+app-sidebar {
+  justify-content: center;
+  display: flex;
+}
+
+.col{
+    padding: inherit;
+}
+
+em {
+  color: #e71515;
+  font-weight: bold;
+}
+.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.col-md-2{
+    min-width: 200px;
+    background-color: #FFFFFF;
+}
+
+.col{
+    background-color: #F5F6FF;
+    max-width: inherit;
+}
+
+@media (min-width: 800px)
+{
+  .col-md-2{
+    max-width: 221px;
+  }
+}

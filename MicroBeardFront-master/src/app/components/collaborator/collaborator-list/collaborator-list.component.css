@@ -1,0 +1,24 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+i {
+    margin-right: 5px;
+}
+
+.endButton{
+    align-self: flex-end;
+}
+
+.ignored{
+    visibility: hidden;
+}
+
+.modify{
+    width: 112px;
+    margin: 0;
+    text-align: end;
+}
+
+.modify button {
+    margin-left: 5px;
+    width: 42px;
+}

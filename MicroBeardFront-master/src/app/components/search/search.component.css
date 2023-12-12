@@ -1,0 +1,31 @@
+.search-container{
+  display: flex;
+  width: 500px;
+  margin-bottom: 5px;
+}
+
+.search-button{
+  width: 40px;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.search-form{
+  max-width: 350px;
+  width: 300px; 
+  margin-left: 10px;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.all-search-form{
+  display: flex;
+}
+
+@media (max-width: 1000px){
+  .search-container{
+    width: 100%;
+  }
+
+  .search-form{
+    width: 100%; 
+  }
+}

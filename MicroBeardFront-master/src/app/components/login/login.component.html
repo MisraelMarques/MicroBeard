@@ -1,0 +1,74 @@
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-12">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-4">
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+                  <img src="./../../../assets/logo.png" alt="logo" class="logo img-fluid">
+                  <h4 class="fontTitleBig mt-1 mb-4 pb-1">MicroBeard</h4>
+                </div>
+
+                <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="login(loginForm.value)">
+                  <label for="email" class="fontTitle form-label pt-3">Login</label>
+                  <div class="row g-0 form-outline mb-2 align-items-center">
+                    <div class="col">
+                      <input type="email" formControlName="email" id="email" class="fontRegular form-control"
+                      placeholder="Email"/>
+                    </div>
+                      <div class="col-1 input-icon align-items-center justify-content-center">
+                        <i class="bi bi-envelope"></i>
+                      </div>
+                  </div>
+                  <div class="col-fuild">
+                    <em *ngIf="validateControl('email') 
+                    && hasError('email', 'required')">O Email é obrigatório.</em>
+                    <em *ngIf="validateControl('email') 
+                    && hasError('email', 'maxlength')">O número máximo de caracteres é 80.</em>
+                    <em *ngIf="validateControl('email') 
+                    && hasError('email', 'pattern')">Email inválido.</em>
+                  </div>
+                  <label for="password" class="fontTitle form-label pt-3">Senha</label>
+                  <div class="row g-0 form-outline mb-2 align-items-center">
+                    <div class="col">
+                      <input type="password" formControlName="password" id="password" class="fontRegular form-control" placeholder="Senha de usuário"/>
+                    </div>
+                    <div class="col-1 input-icon align-items-center justify-content-center">
+                      <i class="bi bi-lock"></i>
+                    </div>
+                  </div>
+                  <em *ngIf="validateControl('password') 
+                  && hasError('password', 'required')">A Senha é obrigatória.</em>
+                 <em *ngIf="validateControl('password') 
+                 && hasError('password', 'maxlength')">O tamanho mínimo é de 8 caracteres</em>
+                 <em *ngIf="validateControl('password') 
+                 && hasError('password', 'pattern')">Senha inválida. Ela deve conter uma letra maíuscula, uma minúscula, um número e um caracter especial.</em>
+
+                  <div class="d-flex align-items-center justify-content-center pb-4 pt-4">
+                    <button type="submit" class="fontTitle btn btn-danger btn-block fa-lg fontButton">Logar</button>
+                  </div>
+
+                  <!-- <br>
+
+                  <div class="d-flex align-items-center justify-content-center pb-4">
+                    <button type="button" class="btn btn-outline-danger">Logar como cliente</button>
+                  </div> -->
+
+                </form>
+
+              </div>
+            </div>
+            <div class="col-lg-8 align-items-left background-image">
+              <div class="px-3 py-4 p-md-5 mx-md-4 divImg">
+                  <img src="./../../../assets/svg/login-image.svg" alt="logo" class="logo img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,155 @@
+<div class="container-fluid">
+    <form [formGroup]="collaboratorForm" autocomplete="off" novalidate (ngSubmit)="createCollaborator(collaboratorForm.value)">
+      <div class="card back">
+        <div class="row mb-3">
+          <label for="name" class="col-form-label col-md-4 fontTitleMedium">*Nome: </label>
+          <div class="col-fuild">
+            <input type="text" formControlName="name" id="name" class="form-control fontRegular" placeholder="Ex: Jõao"/>
+          </div>
+          <div class="col-fuild">
+            <em *ngIf="validateControl('name') 
+            && hasError('name', 'required')">O Nome é obrigatório.</em>
+            <em *ngIf="validateControl('name') 
+            && hasError('name', 'maxlength')">O número máximo de caracteres é 100.</em>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="birthDate" class="col-form-label col-md-4 fontTitleMedium">Data de nascimento: </label>
+          <div class="col-fuild">
+            <input type="text" formControlName="birthDate" id="birthDate" 
+            class="fontRegular form-control" readonly bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue'}" />
+          </div>
+          <div class="col-fuild">
+            <em *ngIf="validateControl('birthDate') 
+          && hasError('birthDate', 'invalidDate')">A data de nascimento não pode ser superior ao dia de hoje.</em>
+          </div>
+        </div>
+   
+        <div class="mb-3 row">
+          <label for="cpf" class="col-form-label col-md-4 fontTitleMedium">CPF: </label>
+          <div class="col-fuild">
+            <input type="text" formControlName="cpf" id="cpf" class="form-control fontRegular" placeholder="Ex: 000.000.000-00" mask="000.000.000-99"/>
+          </div>
+          <div class="col-fuild">
+            <em *ngIf="validateControl('cpf') 
+            && hasError('cpf', 'minlength')">O número mínimo de caracteres é 11.</em>
+            <em *ngIf="validateControl('cpf') 
+            && hasError('cpf', 'maxlength')">O número máximo de caracteres é 11.</em>
+            <em *ngIf="validateControl('cpf') 
+            && hasError('cpf', 'maxlength')">CPF inválido. Ele deve conter apenas números</em>
+          </div>
+        </div>
+        
+   
+        <div class="mb-3 row">
+          <label for="email" class="col-form-label col-md-4 fontTitleMedium">*Email: </label>
+          <div class="col-fuild">
+            <input type="email" formControlName="email" id="email" class="form-control fontRegular" placeholder="Ex: usuario@teste.com"/>
+          </div>
+          <div class="col-fuild">
+            <em *ngIf="validateControl('email') 
+            && hasError('email', 'required')">Email é obrigatório</em>
+            <em *ngIf="validateControl('email') 
+            && hasError('email', 'maxlength')">O número máximo de caracteres é 80.</em>
+            <em *ngIf="validateControl('email') 
+            && hasError('email', 'pattern')">Email inválido.</em>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="password" class="col-form-label col-md-4 fontTitleMedium">*Senha: </label>
+            <div class="col-fuild">
+                <input type="password" formControlName="password" id="password" class="form-control fontRegular" placeholder="Ex: 123456@aA"/>
+            </div>
+            <div class="col-fuild">
+                <em *ngIf="validateControl('password') 
+                && hasError('password', 'required')">Senha is obrigatória.</em>
+                <em *ngIf="validateControl('password') 
+                && hasError('password', 'maxlength')">O tamanho mínimo é de 8 caracteres</em>
+                <em *ngIf="validateControl('password') 
+                && hasError('password', 'pattern')">Senha inválida. Ela deve conter uma letra maíuscula, uma minúscula, um número e um caracter especial.</em>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="phone" class="col-form-label col-md-4 fontTitleMedium">Telefone: </label>
+            <div class="col-fuild">
+                <input type="text" formControlName="phone" id="phone" class="form-control fontRegular" placeholder="Ex: (00) 00000-0000" mask="(00) 0000-0000||(00) 00000-0000"/>
+            </div>
+            <div class="col-fuild">
+                <em *ngIf="validateControl('phone') 
+                && hasError('phone', 'maxlength')">O tamanho máximo é de 15 caracteres.</em>
+                <em *ngIf="validateControl('phone') 
+                && hasError('phone', 'pattern')">Telefone inválido. Tente seguir esse padrão, com ou sem o DDD e o 9: (XX) 9XXXX-XXXX</em>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="function" class="col-form-label col-md-4 fontTitleMedium">Função: </label>
+            <div class="col-fuild">
+                <input type="text" formControlName="function" id="function" class="form-control fontRegular" placeholder="Ex: Cabeleireiro"/>
+            </div>
+            <div class="col-fuild">
+                <em *ngIf="validateControl('function') 
+                && hasError('function', 'maxlength')">O tamanho máximo é de 100 caracteres.</em>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label for="salary" class="col-form-label col-md-4 fontTitleMedium">Salário: </label>
+          <div class="col-fuild">
+              <input type="text" formControlName="salary" id="salary" class="form-control fontRegular" placeholder="Ex: R$1000,00" mask="separator.2"
+              [thousandSeparator]="'.'"
+              [decimalMarker]="','"
+              [dropSpecialCharacters]="true"/>
+          </div>
+          <div class="col-fuild">
+              <em *ngIf="validateControl('salary') 
+              && hasError('salary', 'min')">O valor deve ser positivo</em>
+              <em *ngIf="validateControl('salary') 
+              && hasError('salary', 'max')">O valor não pode passar de 999999,99.</em>
+          </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="commision" class="col-form-label col-md-4 fontTitleMedium">Commisão: </label>
+        <div class="col-fuild">
+            <input type="text" formControlName="commision" id="commision" class="form-control fontRegular" placeholder="Ex: R$200,00" mask="separator.2"
+          [thousandSeparator]="'.'"
+          [decimalMarker]="','"
+          [dropSpecialCharacters]="true"/>
+        </div>
+        <div class="col-fuild">
+          <em *ngIf="validateControl('commision') 
+              && hasError('commision', 'min')">O valor deve ser positivo</em>
+              <em *ngIf="validateControl('commision') 
+              && hasError('commision', 'max')">O valor não pode passar de 999999,99.</em>
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label for="isAdmin" class="col-form-label col-md-4 fontTitleMedium">Admin: </label>
+      <div class="col-fuild">
+          <input type="checkbox" formControlName="isAdmin" id="isAdmin" value="true" />
+      </div>
+      <div class="col-fuild">
+      </div>
+  </div>
+   
+        <br>
+
+        <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviços:</span>
+
+        <app-collaborator-manage-license formControlName = "licenses" [licenses]="(licenses)"></app-collaborator-manage-license>
+        <em *ngIf="collaboratorForm.errors?.servicesError">{{collaboratorForm.errors?.errorMessage}}</em>
+        
+        <br>
+   
+        <div class="buttonsDiv">
+          <button title="Voltar" type="button" class="fontButton btn btn-secondary" (click)="redirectToCollaboratorList()"><i class="bi bi-arrow-return-left"></i></button>
+          <button type="submit" [disabled]="!collaboratorForm.valid" [className]="!collaboratorForm.valid ? 'fontButton btn btn-warning': 'fontButton btn btn-success'">Salvar</button>
+        </div>
+      </div>
+    </form>
+  </div>

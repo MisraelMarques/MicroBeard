@@ -1,0 +1,38 @@
+a i {
+  justify-content: center;
+  padding-right: 1em;
+}
+
+li {
+  border-radius: 5px;
+}
+
+a{
+  color: #484848;
+}
+
+.navbar{
+  padding-right: 10px;
+  padding-left: 30px;
+  box-shadow: 0px 0px 15px #d1d3d9;
+}
+
+.navbar-brand:hover{
+  color: rgb(25, 93, 176);
+}
+
+.logo {
+  width: 50px;
+  border-radius: 5px;
+  margin-right: 5px;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.col-logout {
+  text-align: end;
+}
+
+.logout a:hover{
+  cursor: pointer;
+  color: rgb(25, 93, 176);
+}

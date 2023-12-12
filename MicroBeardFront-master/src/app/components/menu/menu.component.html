@@ -1,0 +1,29 @@
+<div class="row g-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+      <div class="col g-0">
+        <div class="container-fluid g-0">
+          <a class="navbar-brand fontBig" [routerLink]="['/scheduling/calendar']"> <img src="./../../../assets/logo.png" alt="logo" class = "logo img-fluid"> MicroBeard</a>
+          <!-- <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseNav">
+            <span class="navbar-toggler-icon"></span>
+          </button> -->
+  
+          <!-- <div class="collapse navbar-collapse" id="collapseNav" [collapse]="!isCollapsed" [isAnimated]="true">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/collaborator/list']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Collaborator Actions </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Account Actions </a>
+              </li>
+            </ul>
+          </div> -->
+        </div>
+      </div>
+      <div class="col g-0 col-logout">
+        <div class="logout container-fluid g-0">
+          <a (click)="logout()" class="fontMediumn"><i class="bi bi-box-arrow-right"></i></a>
+      </div>
+      </div>
+    </nav>
+</div>

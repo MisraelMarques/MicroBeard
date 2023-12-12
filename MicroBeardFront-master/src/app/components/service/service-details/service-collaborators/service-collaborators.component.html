@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="fontTitle">Code</th>
+              <th class="col-8 fontTitle">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let license of licenses" (click)="onCollaboratorClicked(license?.collaborator)">
+              <td class="fontRegular">{{license?.collaborator?.code}}</td>
+              <td class="fontRegular">{{license?.collaborator?.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

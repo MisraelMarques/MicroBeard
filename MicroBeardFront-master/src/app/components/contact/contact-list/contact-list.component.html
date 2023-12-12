@@ -1,0 +1,44 @@
+<div class="back card">
+  <div class="row g-0 justify-content-between">
+    <app-search class="col-md-auto"  [Search]="queryString.Search" (getAll) ="getAllContacts()"></app-search>
+    <div  class="col-md-2 mt-2 btn btn-primary" [routerLink]="['/contact/create']"> <a class ="fontButton text-decoration-none text-reset" ><i class="bi bi-person-badge-fill"></i>Cadastrar Cliente</a> </div>
+  </div> <br>
+  <div class="row g-0">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="fontTitle"(click)="updateOrdination('Code')"><div class="orderable"><span>Código</span><i [ngClass]="{
+                'ignored': queryString.Ordination['Code']['Order'] == 0,
+                'bi bi-caret-up-fill': queryString.Ordination['Code']['Order'] == 1,
+                'bi bi-caret-down-fill': queryString.Ordination['Code']['Order'] == 2}"></i></div></th>
+              <th class="fontTitle"(click)="updateOrdination('Name')"><div class="orderable"><span>Nome</span><i [ngClass]="{
+                'ignored': queryString.Ordination['Name']['Order'] == 0,
+                'bi bi-caret-up-fill': queryString.Ordination['Name']['Order'] == 1,
+                'bi bi-caret-down-fill': queryString.Ordination['Name']['Order'] == 2}"></i></div></th>
+              <th class="fontTitle"(click)="updateOrdination('Email')"><div class="orderable"><span>Email</span><i [ngClass]="{
+                'ignored': queryString.Ordination['Email']['Order'] == 0,
+                'bi bi-caret-up-fill': queryString.Ordination['Email']['Order'] == 1,
+                'bi bi-caret-down-fill': queryString.Ordination['Email']['Order'] == 2}"></i></div></th>
+              <th class="fontTitle modify"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let contact of contacts" class="clickable" (click)="getContactDetails(contact.code)">
+              <td class="fontRegular">{{contact.code}}</td>
+              <td class="fontRegular">{{contact.name}}</td>
+              <td class="fontRegular">{{contact.email}}</td>
+              <td class="modify">
+                <button title="Atualizar" type="button" id="update" class="fontButton btn btn-success" (click)="redirectToUpdatePage(contact.code)"><i class="bi bi-pencil-square"></i></button>
+                <button title="Apagar" type="button" id="delete" class="fontButton btn btn-danger" (click)="redirectToDeletePage(contact.code)" ><i class="bi bi-trash-fill"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+      <app-pagination [Pagination]="queryString.Pagination" (getAll) ="getAllContacts()"></app-pagination>
+</div>

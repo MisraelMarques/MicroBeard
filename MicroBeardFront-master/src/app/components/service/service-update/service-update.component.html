@@ -1,0 +1,84 @@
+<div class="container-fluid">
+  <form [formGroup]="serviceForm" autocomplete="off" novalidate (ngSubmit)="updateService(serviceForm.value)">
+    <div class="card back">
+      <div class="row mb-3">
+        <label for="name" class="col-form-label col-md-2 fontTitleMedium">*Nome: </label>
+        <div class="col-fluid">
+          <input type="text" formControlName="name" id="name" class="form-control fontRegular" placeholder="Ex: Corte de Cabelo"/>
+        </div>
+        <div class="col-fluid">
+          <em *ngIf="validateControl('name') 
+          && hasError('name', 'required')">O Nome é obrigatório.</em>
+          <em *ngIf="validateControl('name') 
+          && hasError('name', 'maxlength')">O número máximo de caracteres é 100.</em>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="price" class="col-form-label col-md-2 fontTitleMedium">Preço: </label>
+        <div class="col-fluid">
+          <input type="text" formControlName="price" id="price" class="form-control fontRegular" placeholder="Ex: R$30,00" mask="separator.2"
+          [thousandSeparator]="'.'"
+          [decimalMarker]="','"
+          [dropSpecialCharacters]="true"
+        />
+        </div>
+        <div class="col-fuild">
+          <em *ngIf="validateControl('price') 
+              && hasError('price', 'min')">O valor deve ser positivo</em>
+              <em *ngIf="validateControl('price') 
+              && hasError('price', 'max')">O valor não pode passar de 999999,99.</em>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="time" class="col-form-label col-md-2 fontTitleMedium">Tempo em minutos: </label>
+        <div class="col-fluid">
+          <input type="number" formControlName="time" id="time" class="form-control fontRegular" placeholder="Ex: 30"/>
+        </div>
+        <div class="col-fuild">
+          <em *ngIf="validateControl('time') 
+              && hasError('time', 'min')">O valor deve ser positivo</em>
+              <em *ngIf="validateControl('time') 
+              && hasError('time', 'max')">O valor não pode passar de 10000.</em>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+          <label for="type" class="col-form-label col-md-2 fontTitleMedium">Tipo: </label>
+          <div class="col-fluid">
+              <input type="text" formControlName="type" id="type" class="form-control fontRegular" placeholder="Ex: Corte" />
+          </div>
+          <div class="col-fluid">
+              <em *ngIf="validateControl('type') 
+              && hasError('type', 'maxlength')">O número máximo de caracteres é 50.</em>
+          </div>
+      </div>
+ 
+      <div class="mb-3 row">
+        <label for="description" class="col-form-label col-md-2 fontTitleMedium">Descrição: </label>
+        <div class="col-fluid">
+          <input type="text" formControlName="description" id="description" class="form-control fontRegular" placeholder="Ex: Serviço realizado para corte de cabelos"/>
+        </div>
+        <div class="col-fluid">
+          <em *ngIf="validateControl('description') 
+          && hasError('description', 'maxlength')">O número máximo de caracteres é 250.</em>
+        </div>
+      </div>
+ 
+      <br>
+
+      <span class="fontTitleBig"><i class="bi bi-people-fill"></i> Colaboradores:</span>
+
+          
+          <app-service-manage-license formControlName = "licenses" [licenses]="service?.licenses"></app-service-manage-license>
+          <br>
+ 
+      <div class="buttonsDiv">
+        <button title="Voltar" type="button" class="btn btn-secondary" (click)="redirectToServiceList()"><i class="bi bi-arrow-return-left"></i></button>
+        <button type="submit" [disabled]="!serviceForm.valid" [className]="!serviceForm.valid ? 'btn btn-warning': 'btn btn-success'">Salvar</button>
+      </div>
+      
+    </div>
+  </form>
+</div>

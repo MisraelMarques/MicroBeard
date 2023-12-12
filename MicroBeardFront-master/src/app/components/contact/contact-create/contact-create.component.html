@@ -1,0 +1,121 @@
+<div class="container-fluid">
+  <form [formGroup]="contactForm" autocomplete="off" novalidate (ngSubmit)="createContact(contactForm.value)">
+    <div class="card back">
+      <div class="row mb-3">
+        <label for="name" class="col-form-label col-md-4 fontTitleMedium">*Nome: </label>
+        <div class="col-fuild">
+          <input type="text" formControlName="name" id="name" class="form-control fontRegular" placeholder="Ex: João"/>
+        </div>
+        <div class="col-fuild">
+          <em *ngIf="validateControl('name') 
+          && hasError('name', 'required')">O Nome é obrigatório.</em>
+          <em *ngIf="validateControl('name') 
+          && hasError('name', 'maxlength')">O número máximo de caracteres é 100.</em>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="address" class="col-form-label col-md-4 fontTitleMedium">Endereço: </label>
+        <div class="col-fuild">
+          <input type="text" formControlName="address" id="address" class="form-control fontRegular" placeholder="Ex: Avenida Tiradentes"/>
+        </div>
+        <div class="col-fuild">
+          <em *ngIf="validateControl('address') 
+          && hasError('address', 'minlength')">O número mínimo de caracteres é 250.</em>
+          </div>
+      </div>
+      
+      <div class="mb-3 row">
+        <label for="email" class="col-form-label col-md-4 fontTitleMedium">*Email: </label>
+        <div class="col-fuild">
+          <input type="email" formControlName="email" id="email" class="form-control fontRegular" placeholder="Ex: usuario@teste.com"/>
+        </div>
+        <div class="col-fuild">
+          <em *ngIf="validateControl('email') 
+          && hasError('email', 'required')">Email é obrigatório</em>
+          <em *ngIf="validateControl('email') 
+          && hasError('email', 'maxlength')">O número máximo de caracteres é 80.</em>
+          <em *ngIf="validateControl('email') 
+          && hasError('email', 'pattern')">Email inválido.</em>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+          <label for="password" class="col-form-label col-md-4 fontTitleMedium">*Senha: </label>
+          <div class="col-fuild">
+              <input type="password" formControlName="password" id="password" class="form-control fontRegular" placeholder="Ex: 123456@aA"/>
+          </div>
+          <div class="col-fuild">
+              <em *ngIf="validateControl('password') 
+              && hasError('password', 'required')">Senha é obrigatória.</em>
+              <em *ngIf="validateControl('password') 
+              && hasError('password', 'maxlength')">O tamanho mínimo é de 8 caracteres</em>
+              <em *ngIf="validateControl('password') 
+              && hasError('password', 'pattern')">Senha inválida. Ela deve conter uma letra maíuscula, uma minúscula, um número e um caracter especial.</em>
+          </div>
+      </div>
+ 
+      <div class="mb-3 row">
+        <label for="cpf" class="col-form-label col-md-4 fontTitleMedium">CPF: </label>
+        <div class="col-fuild">
+          <input type="text" formControlName="cpf" id="cpf" class="form-control fontRegular" placeholder="Ex: 000.000.000-00" mask="000.000.000-99"/>
+        </div>
+        <div class="col-fuild">
+          <em *ngIf="validateControl('cpf') 
+          && hasError('cpf', 'minlength')">O número mínimo de caracteres é 11.</em>
+          <em *ngIf="validateControl('cpf') 
+          && hasError('cpf', 'maxlength')">O número máximo de caracteres é 11.</em>
+          <em *ngIf="validateControl('cpf') 
+          && hasError('cpf', 'maxlength')">CPF inválido. Ele deve conter apenas números</em>
+        </div>
+      </div>
+
+      <div class="mb-3 row">
+          <label for="phone" class="col-form-label col-md-4 fontTitleMedium">Telefone: </label>
+          <div class="col-fuild">
+              <input type="text" formControlName="phone" id="phone" class="form-control fontRegular" placeholder="Ex: (00) 00000-0000" mask="(00) 0000-0000||(00) 00000-0000">
+          </div>
+          <div class="col-fuild">
+              <em *ngIf="validateControl('phone') 
+              && hasError('phone', 'maxlength')">O tamanho máximo é de 15 caracteres.</em>
+              <em *ngIf="validateControl('phone') 
+              && hasError('phone', 'pattern')">Telefone inválido. Tente seguir esse padrão, com ou sem o DDD e o 9: (XX) 9XXXX-XXXX</em>
+          </div>
+      </div>
+
+      <div class="mb-3 row">
+          <label for="gender" class="col-form-label col-md-4 fontTitleMedium">Gênero: </label>
+          <div class="col-fuild">
+              <input type="text" formControlName="gender" id="gender" class="form-control fontRegular" oninput="this.value = this.value.toUpperCase()" placeholder="Ex: M ou F" mask="U" [pattern]="'[MFmf]'"/>
+          </div>
+          <div class="col-fuild">
+              <em *ngIf="validateControl('gender') 
+              && hasError('gender', 'maxlength')">O tamanho máximo é de 1 caracter.</em>
+              <em *ngIf="validateControl('gender') 
+              && hasError('gender', 'pattern')">Coloque M para Masculino ou F para Feminino.</em>
+                
+            </div>
+      </div>
+
+      <div class="mb-3 row">
+        <label for="birthDate" class="col-form-label col-md-4 fontTitleMedium">Data de nascimento: </label>
+        <div class="col-fuild">
+          <input type="text" formControlName="birthDate" id="birthDate" 
+          class="fontRegular form-control" readonly bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue'}" />
+        </div>
+        <div class="col-fuild">
+          <em *ngIf="validateControl('birthDate') 
+          && hasError('birthDate', 'invalidDate')">A data de nascimento não pode ser superior ao dia de hoje.</em>
+        </div>
+      </div>
+ 
+      <br>
+ 
+      <div class="buttonsDiv">
+        <button title="Voltar" type="button" class="fontButton btn btn-secondary" (click)="redirectToContactList()"><i class="bi bi-arrow-return-left"></i></button>
+        <button type="submit" [disabled]="!contactForm.valid" [className]="!contactForm.valid ? 'fontButton btn btn-warning': 'fontButton btn btn-success'">Salvar</button>
+      </div>
+      
+    </div>
+  </form>
+</div>

@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Adicionar Serviço</h4>
+    <button type="button" class="close" aria-label="Fechar" (click)="close()" >
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+    
+   <div class="back card">
+        <div class="row g-0">
+        <div class="col-md-12">
+            <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th class="fontTitle">Código</th>
+                    <th class="fontTitle">Nome</th>
+                    <th class="fontTitle">Detalhes</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let service of services">
+                    <td class="fontRegular">{{service.code}}</td>
+                    <td class="fontRegular">{{service.name}}</td>
+                    <td><button title="Adicionar" type="button" id="details" class="fontButton btn btn-info" (click)="returnService(service)">Adicionar</button></td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        </div>
+        <br>
+        <app-pagination [Pagination]="queryString.Pagination" (getAll) ="getAllServices()"></app-pagination>
+
+    </div>

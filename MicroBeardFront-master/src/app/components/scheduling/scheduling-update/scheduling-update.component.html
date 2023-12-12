@@ -1,0 +1,84 @@
+<div class="container-fluid">
+    <form [formGroup]="schedulingForm" autocomplete="off" novalidate (ngSubmit)="updateScheduling(schedulingForm.value)">
+      <div class="back card">
+        
+        <div class="row mb-3">
+            <label for="title" class="fontTitleMedium col-form-label col-md-4">Título: </label>
+            <div class="col-fluid">
+              <input type="text" formControlName="title" id="title" class="fontRegular form-control" />
+            </div>
+            <div class="col-fuild">
+              <em *ngIf="validateControl('title') 
+              && hasError('name', 'maxlength')">O número máximo de caracteres é 100.</em>
+            </div>
+          </div>
+  
+          <div class="mb-3 row">
+            <label for="date" class="fontTitleMedium col-form-label col-md-4">*Data: </label>
+            <div class="col-fuild">
+              <input type="text" formControlName="date" id="date" 
+              class="fontRegular form-control" readonly bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY', containerClass: 'theme-dark-blue' }" />
+            </div>
+            <div class="col-fuild">
+                <em *ngIf="validateControl('date') 
+              && hasError('date', 'required')">Data de início é obrigatória</em>
+            </div>
+          </div>
+
+          <div class="times">
+            <div class="mb-3 row">
+              <label for="startDate" class="label fontTitleMedium col-form-label col-md-4">*Horário de Início </label>
+              <div class="col-fuild">
+                <timepicker [(ngModel)]="startTime" formControlName="startTime" id="startTime" [showMeridian] ="false" [minuteStep]="15" [mousewheel]="true" [arrowkeys]="true"></timepicker>
+              </div>
+              <div class="col-fuild">
+                <em *ngIf="validateControl('startTime') 
+              && hasError('startTime', 'required')">o horário de início é obrigatório</em>
+              <em *ngIf="schedulingForm.errors?.invalidStartTimeRange && (schedulingForm.touched ||schedulingForm.dirty)">{{schedulingForm.errors?.timeErrorMessage}}</em>
+            </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="endDate" class="label fontTitleMedium col-form-label col-md-4">*Horário de Encerramento </label>
+              <div class="col-fuild">
+                <timepicker [(ngModel)]="endTime" formControlName="endTime" id="endTime" [showMeridian] ="false" [minuteStep]="15" [mousewheel]="true" [arrowkeys]="true"></timepicker>
+              </div>
+              <div class="col-fuild">
+                <em *ngIf="validateControl('endTime') 
+              && hasError('endTime', 'required')">o horário de encerramento é obrigatório</em>
+              <em *ngIf="schedulingForm.errors?.invalidEndTimeRange && (schedulingForm.touched ||schedulingForm.dirty)">{{schedulingForm.errors?.timeErrorMessage}}</em>
+              <em *ngIf="schedulingForm.errors?.invalidEndTime && (schedulingForm.touched ||schedulingForm.dirty)">{{schedulingForm.errors?.endTimeErrorMessage}}</em>
+
+            </div>
+            </div>
+          </div>
+
+          <br>
+
+          <span class="fontTitleBig"><i class="bi bi-person-badge-fill"></i> Cliente:</span>
+          <app-scheduling-manage-contact formControlName = "contact" [contact]="scheduling?.contact"></app-scheduling-manage-contact>
+          <em *ngIf="schedulingForm.get('contact').errors?.mustBeFilled && (schedulingForm.touched ||schedulingForm.dirty)">O Cliente é obrigatório</em>
+
+          <br>
+
+          <span class="fontTitleBig"><i class="bi bi-currency-dollar"></i> Serviço:</span>
+          <app-scheduling-manage-service formControlName = "service" [service]="scheduling?.license?.service" [collaborator]="schedulingForm.value.collaborator"></app-scheduling-manage-service>
+          <em *ngIf="schedulingForm.get('service').errors?.mustBeFilled && (schedulingForm.touched ||schedulingForm.dirty)">O Serviço é obrigatório</em>
+          <em *ngIf="schedulingForm.errors?.invalidLicense && (schedulingForm.touched ||schedulingForm.dirty)">{{schedulingForm.errors?.serviceErrorMessage}}</em>
+
+          <br>
+
+          <span class="fontTitleBig"><i class="bi bi-people-fill"></i> Colaborador:</span>
+          <app-scheduling-manage-collaborator formControlName = "collaborator" [collaborator]="scheduling?.license?.collaborator" [service]="schedulingForm.value.service" [isServiceEmpty]="schedulingForm.errors?.isServiceEmpty" ></app-scheduling-manage-collaborator>
+          <em *ngIf="schedulingForm.get('collaborator').errors?.mustBeFilled && (schedulingForm.touched ||schedulingForm.dirty)">O Colaborador é obrigatório</em>
+          <em *ngIf="schedulingForm.errors?.invalidLicense && (schedulingForm.touched ||schedulingForm.dirty)">{{schedulingForm.errors?.collaboratorErrorMessage}}</em>
+
+          <br>
+
+          <div class="buttonsDiv">
+            <button title="Voltar" type="button" class="fontButton btn btn-secondary" (click)="redirectToSchedulingList()"><i class="bi bi-arrow-return-left"></i></button>
+            <button type="submit" [disabled]="!schedulingForm.valid"  [className]="!schedulingForm.valid ? 'fontButton btn btn-warning': 'fontButton btn btn-success'">Salvar</button>
+        </div>
+      </div>
+    </form>
+</div>

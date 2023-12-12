@@ -1,0 +1,123 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Nunito:wght@400;600;700&family=Poppins:wght@700&display=swap');
+
+/* angular-cli file: src/styles.css */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+html{
+    min-height: 100vh;
+    margin: 0;
+}
+
+.cal-event-action i {
+    color: #74abff;
+}
+
+.cal-event-action i:hover {
+    color: #74acff83;
+}
+
+body{
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+}
+
+.back{
+    background-color: #FFFFFFFF;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 30px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
+    opacity: 0.8;
+}
+
+.orderable {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.orderable:hover {
+    opacity: 0.9;
+}
+
+.buttonsDiv{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+
+/* Fonts */
+
+.fontBig{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 34px;
+    color: black;
+}
+
+.fontMedium{
+    color: #484848;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.fontTitleBig{
+    color: #484848;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.fontTitle{
+    color: #484848;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.fontTitleMedium{
+    color: #484848;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.fontRegular{
+    color: #222222;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.fontButton{
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.fontCalendar{
+    color: #484848;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+em {
+    color: red;
+}@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+ 
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';

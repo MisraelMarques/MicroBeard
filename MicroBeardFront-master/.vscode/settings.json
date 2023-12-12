@@ -1,0 +1,5 @@
+{
+    "angular.enable-strict-mode-prompt": false,
+    "appService.defaultWebAppToDeploy": "/subscriptions/142ad9f8-4125-44bd-940f-671cbf40ea49/AppServices/subscriptions/142ad9f8-4125-44bd-940f-671cbf40ea49/resourceGroups/Fatec/providers/Microsoft.Web/sites/microbeard-app",
+    "appService.deploySubpath": "dist\\micro-beard-front"
+}

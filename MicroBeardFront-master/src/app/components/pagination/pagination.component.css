@@ -1,0 +1,12 @@
+.paginationText {
+    opacity: 0.8;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 500px){
+    .pagination:nth-child(2)::before{
+        content: "\a";
+        white-space: pre;
+    }
+}

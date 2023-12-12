@@ -1,0 +1,157 @@
+<div class="container">
+  <div class="row g-0">
+    <div class="fillAvailable card back">
+      
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="code" class="control-label fontTitleMedium">Código:</label>
+        </div>
+        <div class="col-md-7">
+          <span class ="fontRegular" name="code">
+            {{contact?.code}}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="name" class="control-label fontTitleMedium">Name:</label>
+        </div>
+        <div class="col-md-7">
+          <span class="fontRegular" name="name">
+            {{ contact?.name }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="address" class="control-label fontTitleMedium">Endereço:</label>
+        </div>
+        <div class="col-md-7">
+          <span class="fontRegular" name="address">
+            {{ contact?.address }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="email" class="control-label fontTitleMedium">Email:</label>
+        </div>
+        <div class="col-md-7">
+          <span class="fontRegular" name="name">
+            {{ contact?.email }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="cpf" class="control-label fontTitleMedium">CPF:</label>
+        </div>
+        <div class="col-md-7">
+          <span class="fontRegular" name="cpf">
+            {{ contact?.cpf | cpfcnpj}}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="phone" class="control-label fontTitleMedium">Telefone:</label>
+        </div>
+        <div class="col-md-7">
+          <span class="fontRegular" name="phone">
+            {{ contact?.phone }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="gender" class="control-label fontTitleMedium">Gênero:</label>
+        </div>
+        <div class="col-md-7">
+          <span class="fontRegular" name="gender">
+            {{ contact?.gender === 'M' ? 'Masculino' : 'Feminino' }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="birthDate" class="control-label fontTitleMedium">Data de Nascimento:</label>
+        </div>
+        <div class="col-md-7">
+          <span class="fontRegular" name="name">
+            {{ contact?.birthDate }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="creatorCode" class="control-label fontTitleMedium">Criador:</label>
+        </div>
+        <div class="col-md-7">
+          <span class ="fontRegular" name="creatorCode">
+            {{contact?.creatorCode}}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="createDate" class="control-label fontTitleMedium">Data de criação:</label>
+        </div>
+        <div class="col-md-7">
+          <span class ="fontRegular" name="createDate">
+            {{contact?.createDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="updaterCode" class="control-label fontTitleMedium">Atualizador:</label>
+        </div>
+        <div class="col-md-7">
+          <span class ="fontRegular" name="updaterCode">
+            {{contact?.updaterCode ? contact?.updaterCode : contact?.updateDate ? 'Editado pelo cliente' : '' }}
+          </span>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <div class="col-md-4">
+          <label for="updateDate" class="control-label fontTitleMedium">Data de Atualização:</label>
+        </div>
+        <div class="col-md-7">
+          <span class ="fontRegular" name="updateDate">
+            {{contact?.updateDate | date: 'dd/MM/yyyy HH:mm':'UTC-6'}}
+          </span>
+        </div>
+      </div>
+
+      <br><br>
+
+      <span class="fontTitle">Tem certeza?</span>
+
+      <br />
+      <div class="buttonsDiv">
+        <button
+        title="Voltar"
+            type="button"
+            class="fontButton btn btn-secondary"
+            (click)="redirectToContactList()">
+            <i class="bi bi-arrow-return-left"></i>
+          </button>
+          <button title="Apagar" type="submit" class="fontButton btn btn-danger" (click)="deleteContact(false)">
+            Apagar
+          </button>
+      </div>
+      <br />
+    </div>
+  </div>
+</div>
